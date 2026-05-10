@@ -88,6 +88,6 @@ Task 2: run_dbt → runs dbt run
 
 
 ## Airflow Operation
-![Airflow Operation](operation1/.png)
-![Airflow Operation](operation2/.png)
-![Airflow Operation](operation3/.png)
+![Airflow Operation](screenshots/operation1.png)
+![Airflow Operation](screenshots/operation2.png)
+![Airflow Operation](screenshots/operation3.png)

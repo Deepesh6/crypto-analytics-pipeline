@@ -10,27 +10,29 @@ Real-time cryptocurrency analytics pipeline fetching live market data from CoinG
 
 ## Architecture
 
+```
 CoinGecko API (daily)
-│
-▼ Python ingestion script
+      │
+      ▼ Python ingestion script
 AWS RDS PostgreSQL - crypto_raw schema
-│
-▼ DBT transformation
+      │
+      ▼ DBT transformation
 AWS RDS PostgreSQL - crypto_dev schema
-│
-├── Staging Layer (1 view)
-│   stg_coin_prices (with deduplication)
-│
-├── Dimension Layer (1 table)
-│   dim_coins
-│
-└── Marts Layer (3 tables)
-fct_daily_prices (central fact table)
-fct_volume_analysis
-fct_market_dominance
-│
-▼
+      │
+      ├── Staging Layer (1 view)
+      │   stg_coin_prices (with deduplication)
+      │
+      ├── Dimension Layer (1 table)
+      │   dim_coins
+      │
+      └── Marts Layer (3 tables)
+          fct_daily_prices (central fact table)
+          fct_volume_analysis
+          fct_market_dominance
+      │
+      ▼
 Airflow DAG (daily 8am)
+```
 
 ## Tech Stack
 - **CoinGecko API** — free real time crypto market data

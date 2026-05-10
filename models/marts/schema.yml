@@ -1,0 +1,87 @@
+version: 2
+
+models:
+  - name: dim_coins
+    description: "Descriptive values of every coin"
+
+    columns:
+      - name: coin_id
+        description: "Unique identifier of the coin"
+        tests:
+          - not_null
+          - unique
+
+      - name: name
+        description: "Full name of the coin e.g. Bitcoin, Ethereum."
+        tests:
+          - not_null
+
+      - name: symbol
+        description: "Short symbol of the coin e.g. btc, eth."
+
+  - name: fct_daily_prices
+    description: "Central fact table - one row per coin per day containing all metrics."
+
+    columns:
+      - name: coin_id
+        description: "Foreign key referencing dim_coins"
+        tests:
+          - not_null
+
+      - name: fetched_at
+        description: "Time at which the data is being fetched out. Used as time dimension"
+        tests: 
+          - not_null
+
+      - name: current_price
+        description: "The price of the coin when the data is being fetched"
+        tests: 
+          - not_null
+
+      - name: market_cap
+        description: "Total market capitalization of the coin in USD."
+        tests: 
+          - not_null
+
+      - name:  last_updated
+        description: "The latest time the data is being updated by the CoinGeko"
+        tests: 
+           - not_null
+
+      - name: total_volume
+        description: "Total trading volume in last 24 hours in USD."
+        tests: 
+        - not_null
+
+  - name: fct_market_dominance
+    description: "Shows each coin's percentage share of total market cap per day."
+    columns: 
+      - name: coin_id
+        description: "Foreign key referencing dim_coins"
+        tests: 
+          - not_null
+      
+      - name: dominance_percentage
+        description: "Coin's market cap as percentage of total market cap that day."
+        tests:
+          - not_null
+
+  - name: fct_volume_analysis
+    description: "The 24hr trading volume of each coin"
+
+    columns: 
+
+      - name: coin_id
+        description: "Foreign key referencing dim_coins"
+        tests: 
+          - not_null
+
+      - name: volume_rank
+        description: "Rank of coin by total volume within each day. 1 = highest volume."
+        tests: 
+          - not_null
+
+      - name: total_volume
+        description: "Total trading volume in last 24 hours in USD."
+        tests:
+          - not_null

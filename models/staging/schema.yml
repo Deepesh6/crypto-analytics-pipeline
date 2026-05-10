@@ -1,0 +1,44 @@
+version: 2
+
+models:
+  - name: stg_coin_prices
+    description: "Staging model for raw crypto prices data"
+
+    columns:
+      - name: coin_id
+        description: "Unique identifier of the coin"
+        tests:
+          - not_null
+
+      - name: current_price
+        description: "Current market price"
+        tests:
+          - not_null
+
+      - name: fetched_at
+        description: "Timestamp when data was fetched"
+        tests:
+         - not_null
+
+      - name: market_cap
+        description: "TTotal market capitalization of the coin in USD."
+        tests: 
+          - not_null
+
+      - name: total_volume
+        description: "Total trading volume in last 24 hours in USD."
+        tests:
+          - not_null
+
+      - name:  last_updated
+        description: "The latest time the data is being updated by the CoinGeko"
+        tests: 
+           - not_null
+
+      - name: name
+        description: "Full name of the coin e.g. Bitcoin, Ethereum."
+
+      - name: symbol
+        description: "Short symbol of the coin e.g. btc, eth."
+
+        

@@ -1,0 +1,26 @@
+
+  
+    
+
+  create  table "postgres"."crypto_dev"."dim_coins__dbt_tmp"
+  
+  
+    as
+  
+  (
+    
+-- a dimesnsion table — one row per unique coin containing its static descriptive attributes. 
+-- containing the descriptive data only
+
+with source as (
+    Select * from "postgres"."crypto_dev"."stg_coin_prices"
+)
+
+, final as (
+    Select distinct coin_id, symbol, name
+    from source
+)
+
+Select * from final
+  );
+  

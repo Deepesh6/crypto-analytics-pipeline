@@ -84,7 +84,7 @@ Task 1: data_ingestion → runs ingest_crypto.py
 Task 2: run_dbt → runs dbt run
 
 ## Pipeline Lineage
-![Pipeline Lineage](screenshots/Screenshot (2).png)
+![Pipeline Lineage](screenshots/lineage.png)
 
 
 ## Airflow Operation
